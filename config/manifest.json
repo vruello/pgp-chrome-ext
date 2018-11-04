@@ -1,0 +1,20 @@
+{
+ "manifest_version": 2,
+ "name": "PGP Handler Extension",
+ "description": " test Todo app as chrome extension using angular4",
+ "version": "1.0",
+ "browser_action": {
+ "default_icon": "shield.png"
+ },
+ "permissions": [],
+ "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'",
+ "web_accessible_resources": [
+ "assets/css/*",
+ "assets/js/*",
+ "assets/fonts/*"
+ ],
+ "background": {
+ 	"scripts": ["background.js"],
+ 	"persistent": false
+ }
+}

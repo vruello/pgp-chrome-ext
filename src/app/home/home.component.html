@@ -1,0 +1,58 @@
+<div style="height: 100vh;">
+  <div fxLayout="row" fxLayoutAlign="center center" style="height: 100%;">
+    <div fxFlex="700px" fxFlex.sm="90" fxFlex.xs="95">
+      <mat-card>
+        <div class="text-center mb-20 mt-20">
+          <img src="assets/images/shield.svg" height="150px" />
+        </div>
+        <mat-card-content>
+          <p>Cette extension vous permet de chiffrer et déchiffrer simplement des messages à l'aide du protocole PGP. </p>
+
+          <p class="mb-30" *ngIf="formFull">Les informations demandées sont nécessaires afin de générer votre clé. Elles ne sont <strong>en aucun cas</strong> utilisées à d'autres fins.</p>
+          <p class="mb-30" *ngIf="!formFull">Entrez votre phrase secrète afin de déverrouiller l'accès à vos clés et contacts.</p>
+          <mat-divider [inset]="false"></mat-divider>
+
+          <form class="mt-50" #form="ngForm" (submit)="onSubmit()">
+            <div class="mb-20" *ngIf="formFull">
+              <mat-form-field appearance="fill" fxFill>
+                <mat-label>Prénom Nom</mat-label>
+                <input matInput placeholder="Prénom Nom" required name="name" [(ngModel)]="name">
+                <mat-hint>de la forme <code>John Doe</code></mat-hint>
+              </mat-form-field>
+            </div>
+
+            <div class="mb-20" *ngIf="formFull">
+              <mat-form-field appearance="fill" fxFill>
+                <mat-label>Adresse email</mat-label>
+                <input matInput type="email" placeholder="Adresse email" email required name="email" [(ngModel)]="email">
+                <mat-hint>de la forme <code>john@doe.com</code></mat-hint>
+              </mat-form-field>
+            </div>
+            <div class="mb-30">
+              <mat-form-field appearance="fill" fxFill>
+                <mat-label>Phrase secrète</mat-label>
+                <input matInput type="password" placeholder="Phrase secrète" required  name="passphrase" [(ngModel)]="passphrase" minlength="30">
+                <mat-hint>Votre phrase secrète doit posséder au moins 30 caractères sans espaces.
+                  Vous pouvez utiliser une phrase courante, par exemple <code>jaimealleralapechecarlesgenssontgentils</code>.</mat-hint>
+              </mat-form-field>
+            </div>
+
+            <div class="text-center">
+              <button mat-flat-button color="primary" type="submit" *ngIf="formFull">Générer une paire de clés</button>
+              <button mat-flat-button color="primary" type="submit" *ngIf="!formFull">Déverrouiller</button>
+            </div>
+
+          </form>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+
+</div>
+
+<ng-template #loadingDialog>
+  <h2 matDialogTitle>Génération en cours...</h2>
+  <mat-dialog-content>
+    <p>La génération de vos clé est en cours. Merci de patienter quelques instants...</p>
+  </mat-dialog-content>
+</ng-template>
