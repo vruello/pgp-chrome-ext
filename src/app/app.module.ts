@@ -24,6 +24,8 @@ import {PGPService} from './pgp.service';
 import {StorageService} from './storage.service';
 import { HomeComponent } from './home/home.component';
 import {FlexLayoutModule} from '@angular/flex-layout';
+import { AddUserComponent } from './add-user/add-user.component';
+import {PassphraseGuard} from './passphrase.guard';
 
 @NgModule({
   declarations: [
@@ -31,7 +33,8 @@ import {FlexLayoutModule} from '@angular/flex-layout';
     NavComponent,
     DashboardComponent,
     UserComponent,
-    HomeComponent
+    HomeComponent,
+    AddUserComponent
   ],
   imports: [
     BrowserAnimationsModule,
@@ -59,8 +62,12 @@ import {FlexLayoutModule} from '@angular/flex-layout';
   providers: [
     UserService,
     PGPService,
-    StorageService
+    StorageService,
+    PassphraseGuard
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [
+    AddUserComponent
+  ]
 })
 export class AppModule { }

@@ -8,7 +8,7 @@
       <h3 mat-h3>Chiffrer un message pour {{ user.name }}</h3>
       <form class="example-form">
         <mat-form-field class="example-full-width" appearance="fill">
-          <textarea matInput placeholder="Entrez le texte à chiffrer" name="message" [(ngModel)]="message"
+          <textarea matInput placeholder="Entrez le texte à chiffrer" name="message" [(ngModel)]="toEncrypt"
                   cdkTextareaAutosize
                   #autosize="cdkTextareaAutosize"
                   cdkAutosizeMinRows="10"
@@ -37,7 +37,7 @@
       <h3 mat-h3>Déchiffrer un message de {{ user.name }}</h3>
       <form class="example-form">
         <mat-form-field class="example-full-width" appearance="fill">
-          <textarea matInput placeholder="Entrez le texte à déchiffrer" name="encrypted" [(ngModel)]="encrypted"
+          <textarea matInput placeholder="Entrez le texte à déchiffrer" name="encrypted" [(ngModel)]="toDecrypt"
                     cdkTextareaAutosize
                     #autosize="cdkTextareaAutosize"
                     cdkAutosizeMinRows="10"
@@ -47,7 +47,7 @@
           <button mat-flat-button color="primary" (click)="onEncrypt()">Déchiffrer</button>
         </div>
         <mat-form-field class="example-full-width" appearance="fill" >
-          <textarea matInput disabled [value]="message"
+          <textarea matInput disabled [value]="decrypted"
                     cdkTextareaAutosize
                     #autosize="cdkTextareaAutosize"
                     cdkAutosizeMinRows="10"></textarea>

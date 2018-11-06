@@ -1,4 +1,4 @@
-import {Component, ElementRef, OnInit, TemplateRef, ViewChild} from '@angular/core';
+import {Component, OnInit, TemplateRef, ViewChild} from '@angular/core';
 import {PGPService} from '../pgp.service';
 import {StorageService} from '../storage.service';
 import {MatDialog, MatSnackBar} from '@angular/material';

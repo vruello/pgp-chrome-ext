@@ -1,0 +1,25 @@
+<form #form="ngForm" (submit)="onSubmit()">
+  <h1 mat-dialog-title>Ajouter un contact</h1>
+  <div mat-dialog-content>
+
+    <div>
+      <mat-form-field fxFill appearance="fill">
+        <mat-label>Nom du contact</mat-label>
+        <input matInput name="name" required [(ngModel)]="user.name" placeholder="Nom du contact">
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field fxFill appearance="fill">
+        <mat-label>Clé publique</mat-label>
+        <textarea rows="8" required placeholder="Copiez ici la clé publique de votre contact" matInput name="publicKey" [(ngModel)]="user.publicKey"></textarea>
+      </mat-form-field>
+    </div>
+
+
+  </div>
+  <div mat-dialog-actions>
+    <span fxFlex="auto"></span>
+    <button mat-button (click)="onNoClick()">Annuler</button>
+    <button mat-flat-button="" type="submit" color="primary">Ajouter</button>
+  </div>
+</form>

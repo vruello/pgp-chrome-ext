@@ -13,12 +13,16 @@ import {PGPService} from '../pgp.service';
 export class UserComponent implements OnInit {
 
   user: User;
-  message: string;
+  toEncrypt: string;
   encrypted: string;
+
+  toDecrypt: string;
+  decrypted: string;
 
   constructor(private route: ActivatedRoute, private userService: UserService, private PGPService: PGPService) { }
 
   ngOnInit() {
+    this.toEncrypt = this.encrypted = this.toDecrypt = this.decrypted = null;
     this.route.paramMap.pipe(
         switchMap(paramMap => {
           return this.userService.getById(+paramMap.get('id'));
@@ -30,7 +34,7 @@ export class UserComponent implements OnInit {
   }
 
   async onEncrypt() {
-    this.encrypted = await this.PGPService.encrypt(this.message);
+    this.encrypted = await this.PGPService.encrypt(this.toEncrypt, this.user.publicKey);
   }
 
 

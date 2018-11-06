@@ -37,13 +37,10 @@ export class PGPService {
     }
   }
 
-  async encrypt(message: string): Promise<string> {
-    const privateKeyArmored = this.storageService.get('privateKeyArmored');
-    const publicKeyArmored = this.storageService.get('publicKeyArmored');
-
+  async encrypt(message: string, publicKey: string): Promise<string> {
     const options = {
       message: openpgp.message.fromText(message),       // input as Message object
-      publicKeys: (await openpgp.key.readArmored(publicKeyArmored)).keys, // for encryption
+      publicKeys: (await openpgp.key.readArmored(publicKey)).keys, // for encryption
       privateKeys: [this.privKeyObj]                                 // for signing (optional)
     };
 

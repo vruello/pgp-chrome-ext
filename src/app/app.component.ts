@@ -1,6 +1,4 @@
-import {Component, OnInit} from '@angular/core';
-import {PGPService} from './pgp.service';
-import {StorageService} from './storage.service';
+import {Component} from '@angular/core';
 
 @Component({
   selector: 'app-root',

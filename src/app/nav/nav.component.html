@@ -6,7 +6,7 @@
     <mat-toolbar>
       Contacts
       <span class="example-spacer"></span>
-      <button mat-icon-button>
+      <button mat-icon-button (click)="openAddUserDialog()">
         <mat-icon aria-label="Ajouter un contact" matTooltip="Ajouter un contact" color="accent">add_circle</mat-icon>
       </button>
     </mat-toolbar>
@@ -43,13 +43,13 @@
         <mat-icon>more_vert</mat-icon>
       </button>
       <mat-menu #menu="matMenu">
-        <button mat-menu-item>
+        <button mat-menu-item (click)="generateList()">
           <mat-icon>dialpad</mat-icon>
-          <span>Redial</span>
+          <span>Generate contacts</span>
         </button>
-        <button mat-menu-item disabled>
+        <button mat-menu-item (click)="removeContacts()">
           <mat-icon>voicemail</mat-icon>
-          <span>Check voicemail</span>
+          <span>Remove all contacts</span>
         </button>
         <button mat-menu-item>
           <mat-icon>notifications_off</mat-icon>

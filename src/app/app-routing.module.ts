@@ -4,12 +4,13 @@ import {DashboardComponent} from './dashboard/dashboard.component';
 import {UserComponent} from './user/user.component';
 import {HomeComponent} from './home/home.component';
 import {AppComponent} from './app.component';
+import {PassphraseGuard} from './passphrase.guard';
 
 const routes: Routes = [
   {
     path: '', component: AppComponent, children: [
       { path: '', component: HomeComponent },
-      { path: 'dashboard', component: DashboardComponent, children: [
+      { path: 'dashboard', component: DashboardComponent, canActivate: [PassphraseGuard], children: [
           { path: 'user/:id', component: UserComponent }
         ]}
     ]
